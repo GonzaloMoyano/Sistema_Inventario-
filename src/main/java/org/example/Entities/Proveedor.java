@@ -1,9 +1,13 @@
 package org.example.Entities;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "proveedor")
@@ -13,4 +17,10 @@ public class Proveedor extends Base{
     private Date fechaHoraBaja;
     private Date fechaHoraAlta;
 
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<OrdenCompra> OC = new ArrayList<OrdenCompra>();
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ArticuloProveedor> articulo_proveedor = new ArrayList<ArticuloProveedor>();
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Articulo> articulo_Predeterminados = new ArrayList<Articulo>();
 }

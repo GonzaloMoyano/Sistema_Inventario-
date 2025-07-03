@@ -1,7 +1,6 @@
 package org.example.Entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.Date;
 @Entity
@@ -18,4 +17,12 @@ public class ArticuloProveedor extends Base {
     private int puntoPedido;
     private int stockSeguridad;
     private int valorCGI;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Proveedor proveedor;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Articulo articulo;
+
+
+
 }
