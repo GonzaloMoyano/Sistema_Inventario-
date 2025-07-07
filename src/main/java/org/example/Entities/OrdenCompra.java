@@ -16,12 +16,13 @@ public class OrdenCompra extends Base {
     private Date fechaRecibida;
     private Date fechaConfirmada;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name= "id_Proveedor")
+    @ManyToOne(fetch = FetchType.LAZY)
     private Proveedor proveedor;
 
-    @OneToMany(cascade= CascadeType.ALL,orphanRemoval = true)
-    private List<OrdenCompraArticulo> OC_Articulo = new ArrayList<OrdenCompraArticulo>();
+    @OneToMany(mappedBy = "OC", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<OrdenCompraArticulo> OC_Articulo;
 
+    @Enumerated(EnumType.STRING)
+    private EstadoOrdenCompra estadoOC;
 
 }

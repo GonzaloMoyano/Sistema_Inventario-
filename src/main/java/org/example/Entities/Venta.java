@@ -15,6 +15,6 @@ public class Venta extends Base{
     private float costoTotal;
     private Date fechaVenta;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy ="venta",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ArticuloVenta> articuloVenta = new ArrayList<ArticuloVenta>();
 }

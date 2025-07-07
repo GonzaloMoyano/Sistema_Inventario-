@@ -20,8 +20,11 @@ public class ArticuloProveedor extends Base {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Proveedor proveedor;
+
     @ManyToOne(fetch = FetchType.LAZY)
     private Articulo articulo;
+    @Enumerated (EnumType.STRING)
+    private ModeloInventario modeloInventario;
 
 
 

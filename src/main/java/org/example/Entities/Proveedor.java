@@ -17,10 +17,13 @@ public class Proveedor extends Base{
     private Date fechaHoraBaja;
     private Date fechaHoraAlta;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<OrdenCompra> OC = new ArrayList<OrdenCompra>();
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ArticuloProveedor> articulo_proveedor = new ArrayList<ArticuloProveedor>();
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Articulo> articulo_Predeterminados = new ArrayList<Articulo>();
+    @OneToMany(mappedBy = "proveedor", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<OrdenCompra> OC;
+
+    @OneToMany(mappedBy = "proveedor", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ArticuloProveedor> articulo_proveedor;
+
+    @OneToMany(mappedBy = "proveedor", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Articulo> articulo_Predeterminados;
+
 }
