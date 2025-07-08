@@ -65,5 +65,4 @@ public abstract class BaseControllerImpl <E extends Base, S extends BaseService 
     }
 
 
-
 }
