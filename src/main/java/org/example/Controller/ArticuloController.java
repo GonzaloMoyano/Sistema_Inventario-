@@ -15,12 +15,21 @@ import java.util.List;
 public class ArticuloController extends BaseControllerImpl <Articulo, ArticuloServiceImpl> {
 
     @PostMapping("/alta")
-    public ResponseEntity<Articulo> altaArticulo(@RequestBody List<ArticuloDTO> dtoArticulos){
+    public ResponseEntity<?> altaArticulo(@RequestBody List<ArticuloDTO> dtoArticulos){
         try {
             List<Articulo> nuevos = servicio.altaArticulo(dtoArticulos);
             return ResponseEntity.status(HttpStatus.CREATED).body(nuevos.get(0)); // O devolver la lista, depende tu diseño
         } catch (Exception e){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
+    @PostMapping("/modificar")
+    public ResponseEntity <?> modificarArticulo(@RequestBody ArticuloDTO dtoArticulos){
+        try {
+            Articulo nuevo = servicio.modificarArticulo(dtoArticulos);
+            return ResponseEntity.status(HttpStatus.CREATED).body(nuevo); // O devolver la lista, depende tu diseño
+        } catch (Exception e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }
 

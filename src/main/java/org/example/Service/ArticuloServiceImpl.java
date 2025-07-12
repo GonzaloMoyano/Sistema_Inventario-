@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ArticuloServiceImpl extends BaseServiceImpl <Articulo, Long> implements ArticuloService, Serializable {
@@ -58,12 +59,40 @@ public class ArticuloServiceImpl extends BaseServiceImpl <Articulo, Long> implem
     }
 
     @Override
-    public Articulo modificarArticulo(ArticuloDTO dto) throws Exception {
-        return null;
+    public Articulo modificarArticulo(ArticuloDTO dtoArticulo) throws Exception {
+        Optional<Articulo> artModificado = articuloRepository.findById(dtoArticulo.getId());
+        Articulo art = artModificado.orElseThrow(() -> new Exception("El artículo con ID " + dtoArticulo.getId() + " no existe"));
+        if (dtoArticulo.getNombreArticulo() != null && !dtoArticulo.getNombreArticulo().isBlank()) {
+            art.setNombreArticulo(dtoArticulo.getNombreArticulo());
+        }
+
+        if (dtoArticulo.getDescripcionArticulo() != null && !dtoArticulo.getDescripcionArticulo().isBlank()) {
+            art.setDescripcionArticulo(dtoArticulo.getDescripcionArticulo());
+        }
+
+        if (dtoArticulo.getPrecioVentaArt() != null && dtoArticulo.getPrecioVentaArt() >= 0) {
+            art.setPrecioVentaArticulo(dtoArticulo.getPrecioVentaArt());
+        }
+
+        if (dtoArticulo.getCostoAlmacenamiento() != null && dtoArticulo.getCostoAlmacenamiento() >= 0) {
+            art.setCostoAlmacenamiento(dtoArticulo.getCostoAlmacenamiento());
+        }
+
+        if (dtoArticulo.getStockActual() != null && dtoArticulo.getStockActual() >= 0) {
+            art.setStockActual(dtoArticulo.getStockActual());
+        }
+
+        if (dtoArticulo.getDemandaArticulo() != null && dtoArticulo.getDemandaArticulo() >= 0) {
+            art.setDemandaArticulo(dtoArticulo.getDemandaArticulo());
+        }
+
+        return articuloRepository.save(art);
+
     }
 
     @Override
     public Articulo bajaArticulo() throws Exception {
+
         return null;
     }
 }

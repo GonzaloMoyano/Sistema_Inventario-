@@ -9,6 +9,6 @@ import java.util.List;
 @Service
 public interface ArticuloService extends BaseService<Articulo, Long>{
     List<Articulo> altaArticulo (List<ArticuloDTO> dtoArticulos) throws Exception;
-    Articulo modificarArticulo (ArticuloDTO dto) throws Exception;
+    Articulo modificarArticulo (ArticuloDTO dtoArticulo) throws Exception;
     Articulo bajaArticulo() throws Exception;
 }

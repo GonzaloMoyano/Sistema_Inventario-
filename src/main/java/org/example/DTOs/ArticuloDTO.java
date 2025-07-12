@@ -5,6 +5,7 @@ import lombok.Data;
 @Data
 public class ArticuloDTO {
 
+    private Long id;
     private String nombreArticulo;
     private String descripcionArticulo;
     private Float precioVentaArt;
