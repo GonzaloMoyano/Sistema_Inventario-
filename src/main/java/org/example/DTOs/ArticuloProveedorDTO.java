@@ -1,7 +1,9 @@
 package org.example.DTOs;
 
+import lombok.Data;
 import org.example.Entities.ModeloInventario;
 
+@Data
 public class ArticuloProveedorDTO {
     private float costoCompra;
     private float costoPedido;

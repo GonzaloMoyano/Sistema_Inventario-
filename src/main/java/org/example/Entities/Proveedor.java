@@ -1,21 +1,32 @@
 package org.example.Entities;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import lombok.*;
 
-import java.util.ArrayList;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
 @Entity
 @Table(name = "proveedor")
+@AllArgsConstructor
+@NoArgsConstructor
+@Setter
+@Getter
+@ToString
+
 public class Proveedor extends Base{
+    @Column(name = "nombre_proveedor", nullable = false)
     private String nombreProveedor;
-    private int cuit;
-    private Date fechaHoraBaja;
-    private Date fechaHoraAlta;
+
+    @Column(name = "cuit_proveedor", nullable = false)
+    private Long cuitProveedor;
+
+    @Column(name = "fecha_hora_alta")
+    private LocalDateTime fechaHoraAlta;
+
+    @Column(name = "fecha_hora_baja")
+    private LocalDateTime fechaHoraBaja;
 
     @OneToMany(mappedBy = "proveedor", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrdenCompra> OC;

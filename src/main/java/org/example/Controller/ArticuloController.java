@@ -18,7 +18,7 @@ public class ArticuloController extends BaseControllerImpl <Articulo, ArticuloSe
     public ResponseEntity<?> altaArticulo(@RequestBody List<ArticuloDTO> dtoArticulos){
         try {
             List<Articulo> nuevos = servicio.altaArticulo(dtoArticulos);
-            return ResponseEntity.status(HttpStatus.CREATED).body(nuevos.get(0)); // O devolver la lista, depende tu diseño
+            return ResponseEntity.status(HttpStatus.CREATED).body(nuevos);
         } catch (Exception e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
