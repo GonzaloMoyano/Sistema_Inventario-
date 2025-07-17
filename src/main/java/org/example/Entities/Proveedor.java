@@ -22,12 +22,6 @@ public class Proveedor extends Base{
     @Column(name = "cuit_proveedor", nullable = false)
     private Long cuitProveedor;
 
-    @Column(name = "fecha_hora_alta")
-    private LocalDateTime fechaHoraAlta;
-
-    @Column(name = "fecha_hora_baja")
-    private LocalDateTime fechaHoraBaja;
-
     @OneToMany(mappedBy = "proveedor", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrdenCompra> OC;
 

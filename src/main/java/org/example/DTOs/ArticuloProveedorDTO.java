@@ -5,11 +5,13 @@ import org.example.Entities.ModeloInventario;
 
 @Data
 public class ArticuloProveedorDTO {
-    private float costoCompra;
-    private float costoPedido;
-    private int demoraEntrega;
-    private float precioUnitario;
     private ModeloInventario modeloInventario;
     private Long id_proveedor;
     private Long id_articulo;
+    private float costoCompra;// C
+    private float costoPedido;//S
+    private int demoraEntrega;// L
+    private int intervaloRevision;
+    private float precioUnitario; // Para que pingo
+
 }

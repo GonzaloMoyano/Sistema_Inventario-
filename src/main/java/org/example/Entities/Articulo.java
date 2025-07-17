@@ -27,6 +27,7 @@ public class Articulo extends Base {
 
 
     @ManyToOne(fetch = FetchType.EAGER )
+
     @JoinColumn(name = "Id_Proveedor_Predeterminado")
     private Proveedor proveedor;
 

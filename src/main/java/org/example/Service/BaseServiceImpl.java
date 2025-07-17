@@ -4,13 +4,14 @@ package org.example.Service;
 import jakarta.transaction.Transactional;
 import org.example.Entities.Base;
 import org.example.Repository.BaseRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
 
 public abstract class BaseServiceImpl <E extends Base, ID extends Serializable> implements BaseService <E,ID> {
-
+    @Autowired
     protected BaseRepository<E,ID> baseRepository;
 
     @Override

@@ -32,6 +32,12 @@ public class ArticuloController extends BaseControllerImpl <Articulo, ArticuloSe
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }
+    @GetMapping("")
+    @Override
+    public ResponseEntity<?> getAll() {
+        return super.getAll();
+    }
+
 
 
 }

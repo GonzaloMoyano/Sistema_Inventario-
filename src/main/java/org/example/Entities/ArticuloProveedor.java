@@ -14,23 +14,30 @@ import java.util.Date;
 
 public class ArticuloProveedor extends Base {
 
-    private int cantidadArticulo;
-    private int costoCompra;//Se calcula
-    private float costoPorPedido; // Se calcula
-    private int demoraEntrega;
-    private int desviacionEstandar;// Atributos para intervalo fijo
+    private Integer cantidadArticulo;
     private Date FechaBajaArticulo;
-    private int intervaloRevision;// Atributos para intervalo fijo
+    private Integer demoraEntrega;
     private float precioUnitario;
-    private int puntoPedido;// Se calcula
-    private int stockSeguridad; // Se calcula
-    private int valorCGI; // Se calcula
+
+
+    private Integer desviacionEstandar;// Atributos para intervalo fijo
+    private Integer intervaloRevision;// Atributos para intervalo fijo
+
+    private Integer loteOptimo; // Se calcula
+    private Integer puntoPedido;// Se calcula
+    private float costoCompra;//Se calcula
+    private float costoAlmacenamiento;
+    private float costoPedido;
+    private float valorCGI; // Se calcula
+    private Integer stockSeguridad; // Se calcula
+    private float costoPorPedido; // Se calcula
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Proveedor proveedor;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Articulo articulo;
+
     @Enumerated (EnumType.STRING)
     private ModeloInventario modeloInventario;
 

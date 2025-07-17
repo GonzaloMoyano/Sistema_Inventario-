@@ -12,7 +12,7 @@ public abstract class BaseControllerImpl <E extends Base, S extends BaseService 
     @Autowired
     protected S servicio;
 
-
+    @GetMapping("")
     public ResponseEntity<?> getAll(){
         try{
             return ResponseEntity.status(HttpStatus.OK).body(servicio.findAll());
